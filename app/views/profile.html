@@ -1,0 +1,40 @@
+<div class="container profile">
+
+  <div class="row">
+    <div class="col-sm-1">
+      <img class="prof-img" ng-src="http://www.gravatar.com/avatar/{{user.md5_hash}}">
+    </div>
+    <div class="col-sm-11">
+      <span class="name">{{user.username}}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-target="#submissions" data-toggle="tab">Submissions</a>
+      </li>
+      <li>
+        <a data-target="#comments" data-toggle="tab">Comments</a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="submissions" ng-include="'views/posts.html'" ng-controller="PostsCtrl"></div>
+  <div class="container posts-page tab-pane" id="comments">
+    <div class="post row" ng-repeat="(commentId, comment) in comments">
+    <div class="col-xs-1"></div>
+    <div class="col-md-9 col-xs-11">
+      <div class="info">
+        <a href="#/posts/{{comment.postId}}">{{commentedPosts[comment.postId].title}}</a>
+      </div>
+      <p>{{comment.text}}
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  </div>
+</div>
